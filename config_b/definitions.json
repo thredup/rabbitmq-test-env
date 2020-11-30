@@ -1,0 +1,75 @@
+{
+    "rabbit_version": "3.8.9",
+    "rabbitmq_version": "3.8.9",
+    "product_name": "RabbitMQ",
+    "product_version": "3.8.9",
+    "users": [
+        {
+            "name": "guest",
+            "password_hash": "BtoiZ6VsxRmyP6HCNjj/fZbQ2TpvyWPoBc4YKdJVRwJQl2jf",
+            "hashing_algorithm": "rabbit_password_hashing_sha256",
+            "tags": "administrator"
+        }
+    ],
+    "vhosts": [
+        {
+            "name": "/"
+        }
+    ],
+    "permissions": [
+        {
+            "user": "guest",
+            "vhost": "/",
+            "configure": ".*",
+            "write": ".*",
+            "read": ".*"
+        }
+    ],
+    "topic_permissions": [],
+    "parameters": [
+        {
+            "value": {
+                "ack-mode": "on-confirm",
+                "queue": "hello",
+                "trust-user-id": false,
+                "uri": "amqp://guest:guest@rabbitmq_a:5672"
+            },
+            "vhost": "/",
+            "component": "federation-upstream",
+            "name": "upstream-queue"
+        }
+    ],
+    "global_parameters": [
+        {
+            "name": "cluster_name",
+            "value": "rabbit@715c70ea9a97"
+        },
+        {
+            "name": "internal_cluster_id",
+            "value": "rabbitmq-cluster-id-_R8eRqOcXfQR3XKJOrAbjw"
+        }
+    ],
+    "policies": [
+        {
+            "vhost": "/",
+            "name": "federated-queue",
+            "pattern": "hello",
+            "apply-to": "queues",
+            "definition": {
+                "federation-upstream-set": "all"
+            },
+            "priority": 0
+        }
+    ],
+    "queues": [
+        {
+            "name": "hello",
+            "vhost": "/",
+            "durable": false,
+            "auto_delete": false,
+            "arguments": {}
+        }
+    ],
+    "exchanges": [],
+    "bindings": []
+}

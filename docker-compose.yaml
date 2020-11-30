@@ -1,0 +1,15 @@
+services:
+  rabbitmq_a:
+    image: rabbitmq:management-alpine
+    ports:
+    - "8080:15672"
+    - "5672:5672"
+    volumes:
+    - ./config_a:/etc/rabbitmq/
+  rabbitmq_b:
+    image: rabbitmq:management-alpine
+    ports:
+    - "3000:15672"
+    - "32769:5672"
+    volumes:
+    - ./config_b:/etc/rabbitmq/
