@@ -49,18 +49,7 @@
             "value": "rabbitmq-cluster-id-_R8eRqOcXfQR3XKJOrAbjw"
         }
     ],
-    "policies": [
-        {
-            "vhost": "/",
-            "name": "federated-queue",
-            "pattern": "hello",
-            "apply-to": "queues",
-            "definition": {
-                "federation-upstream-set": "all"
-            },
-            "priority": 0
-        }
-    ],
+    "policies": [],
     "queues": [
         {
             "name": "hello",
@@ -68,6 +57,60 @@
             "durable": false,
             "auto_delete": false,
             "arguments": {}
+        },
+        {
+            "name": "queue-23",
+            "vhost": "/",
+            "durable": true,
+            "auto_delete": false,
+            "arguments": {
+                "x-queue-type": "classic"
+            }
+        },
+        {
+            "name": "another-queue",
+            "vhost": "/",
+            "durable": true,
+            "auto_delete": false,
+            "arguments": {
+                "x-queue-type": "classic"
+            }
+        },
+        {
+            "name": "queue-4",
+            "vhost": "/",
+            "durable": true,
+            "auto_delete": false,
+            "arguments": {
+                "x-queue-type": "classic"
+            }
+        },
+        {
+            "name": "queue-2",
+            "vhost": "/",
+            "durable": true,
+            "auto_delete": false,
+            "arguments": {
+                "x-queue-type": "classic"
+            }
+        },
+        {
+            "name": "queue-5",
+            "vhost": "/",
+            "durable": true,
+            "auto_delete": false,
+            "arguments": {
+                "x-queue-type": "classic"
+            }
+        },
+        {
+            "name": "queue-3",
+            "vhost": "/",
+            "durable": true,
+            "auto_delete": false,
+            "arguments": {
+                "x-queue-type": "classic"
+            }
         }
     ],
     "exchanges": [],

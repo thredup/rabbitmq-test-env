@@ -26,19 +26,7 @@
         }
     ],
     "topic_permissions": [],
-    "parameters": [
-        {
-            "value": {
-                "ack-mode": "on-confirm",
-                "queue": "hello",
-                "trust-user-id": false,
-                "uri": "amqp://guest:guest@rabbitmq_a:5672"
-            },
-            "vhost": "/",
-            "component": "federation-upstream",
-            "name": "upstream-queue"
-        }
-    ],
+    "parameters": [],
     "global_parameters": [
         {
             "name": "cluster_name",
@@ -49,27 +37,8 @@
             "value": "rabbitmq-cluster-id-_R8eRqOcXfQR3XKJOrAbjw"
         }
     ],
-    "policies": [
-        {
-            "vhost": "/",
-            "name": "federated-queue",
-            "pattern": "hello",
-            "apply-to": "queues",
-            "definition": {
-                "federation-upstream-set": "all"
-            },
-            "priority": 0
-        }
-    ],
-    "queues": [
-        {
-            "name": "hello",
-            "vhost": "/",
-            "durable": false,
-            "auto_delete": false,
-            "arguments": {}
-        }
-    ],
+    "policies": [],
+    "queues": [],
     "exchanges": [],
     "bindings": []
 }
