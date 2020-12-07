@@ -13,3 +13,13 @@ services:
     - "32769:5672"
     volumes:
     - ./config_b:/etc/rabbitmq/
+  mq_producer:
+    build: ./producer
+    restart: always
+    environment:
+    - RABBITMQ_HOST=rabbitmq_a
+  mq_consumer:
+    build: ./consumer
+    restart: always
+    environment:
+    - RABBITMQ_HOST=rabbitmq_a
