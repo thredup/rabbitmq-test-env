@@ -17,7 +17,7 @@ services:
     build: ./producer
     restart: always
     environment:
-    - RABBITMQ_HOST=rabbitmq_a
+    - RABBITMQ_HOST=rabbitmq_b
   mq_consumer:
     build: ./consumer
     restart: always

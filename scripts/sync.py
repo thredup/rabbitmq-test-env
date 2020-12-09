@@ -32,7 +32,7 @@ def declare_upstream_for_rabbitmq_b(queue):
   out = subprocess.check_output("""
   ./rabbitmqadmin -c config.conf -N rabbitmq_b declare parameter component=federation-upstream \
     --vhost {vhost} name=rabbitmq_a_{queue} \
-    value='{{"uri":"amqp://guest:guest@rabbitmq_a:5672/{vhost_uri}","prefetch-count":100,"reconnect-delay":5,"queue":"{queue}"}}'
+    value='{{"uri":"amqp://guest:guest@rabbitmq_a:5672/{vhost_uri}","prefetch-count":100,"reconnect-delay":5,"trust-user-id": true, "queue":"{queue}"}}'
   """.format(queue=queue["name"], vhost=queue["vhost"], vhost_uri=vhost_uri), shell=True)
 
   print(out.decode("utf-8"), end='')
@@ -45,7 +45,7 @@ def declare_upstream_for_rabbitmq_a(queue):
 
   out = subprocess.check_output("""
   ./rabbitmqadmin -c config.conf -N rabbitmq_a declare parameter component=federation-upstream \
-   --vhost {vhost} name=rabbitmq_a_{queue} \
+   --vhost {vhost} name=rabbitmq_b_{queue} \
    value='{{"uri": "amqp://guest:guest@rabbitmq_b:5672/{vhost_uri}", "prefetch-count": 100, "reconnect-delay": 5, "trust-user-id": true, "queue": "{queue}"}}'
   """.format(queue=queue["name"], vhost=queue["vhost"], vhost_uri=vhost_uri), shell=True)
 
@@ -54,7 +54,7 @@ def declare_upstream_for_rabbitmq_a(queue):
 def declare_rabbitmq_b_policy(queue):
   
   policy = {
-    "federation-upstream": "rabbitmq_b_" + queue["name"], 
+    "federation-upstream": "rabbitmq_a_" + queue["name"], 
     "ha-mode": "exactly", 
     "ha-params": 2, 
     "ha-sync-mode": "automatic"
@@ -71,7 +71,7 @@ def declare_rabbitmq_b_policy(queue):
 def declare_rabbitmq_a_policy(queue):
 
   policy = {
-    "federation-upstream": "rabbitmq_a_" + queue["name"], 
+    "federation-upstream": "rabbitmq_b_" + queue["name"], 
     "ha-mode": "exactly", 
     "ha-params": 2, 
     "ha-sync-mode": "automatic"

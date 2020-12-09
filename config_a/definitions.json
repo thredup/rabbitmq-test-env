@@ -26,19 +26,7 @@
         }
     ],
     "topic_permissions": [],
-    "parameters": [
-        {
-            "value": {
-                "ack-mode": "on-confirm",
-                "queue": "hello",
-                "trust-user-id": false,
-                "uri": "amqp://guest:guest@rabbitmq_b:5672"
-            },
-            "vhost": "/",
-            "component": "federation-upstream",
-            "name": "upstream-queue"
-        }
-    ],
+    "parameters": [],
     "global_parameters": [
         {
             "name": "cluster_name",
@@ -59,7 +47,7 @@
             "arguments": {}
         },
         {
-            "name": "queue-23",
+            "name": "queue_6",
             "vhost": "/",
             "durable": true,
             "auto_delete": false,
@@ -68,7 +56,7 @@
             }
         },
         {
-            "name": "another-queue",
+            "name": "queue_4",
             "vhost": "/",
             "durable": true,
             "auto_delete": false,
@@ -77,7 +65,7 @@
             }
         },
         {
-            "name": "queue-4",
+            "name": "queue_2",
             "vhost": "/",
             "durable": true,
             "auto_delete": false,
@@ -86,7 +74,7 @@
             }
         },
         {
-            "name": "queue-2",
+            "name": "queue_5",
             "vhost": "/",
             "durable": true,
             "auto_delete": false,
@@ -95,16 +83,7 @@
             }
         },
         {
-            "name": "queue-5",
-            "vhost": "/",
-            "durable": true,
-            "auto_delete": false,
-            "arguments": {
-                "x-queue-type": "classic"
-            }
-        },
-        {
-            "name": "queue-3",
+            "name": "queue_3",
             "vhost": "/",
             "durable": true,
             "auto_delete": false,
