@@ -6,8 +6,15 @@ logger = Logger.new(STDOUT)
 logger.level = Logger::DEBUG
 
 host = ENV["RABBITMQ_HOST"] || "127.0.0.1"
-connection = Bunny.new(host: host)
-connection.start
+
+begin 
+  connection = Bunny.new(host: host)
+  connection.start
+rescue Bunny::TCPConnectionFailed => e
+  logger.debug 'Connection Failed, waiting 5 seconds'
+  sleep(5)
+  retry
+end
 
 channel = connection.create_channel
 queue = channel.queue('hello')
