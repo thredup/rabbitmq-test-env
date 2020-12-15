@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 require 'bunny'
 require 'logger'
+$stdout.sync = true
 
 logger = Logger.new(STDOUT)
 logger.level = Logger::DEBUG
