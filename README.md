@@ -5,7 +5,7 @@ This repository is a local sandbox for developers to experiment with, providing 
 ### Setup
 1. Run `docker-compose up` to setup all containers.
 *  The rabbitmq containers take a while to start up, resulting in consumers and producers terminating with connection errors until a connection is established.
-*  In order to consume messages from both hosts, federation queue must be setup
-3. To setup federations queues, run `sync.py` in the `scripts` directory.
+*  federation queues are already setup, so consumer on rabbitmq_a can read messages from rabbitmq_b
+*  run the script `sync.py` if you want to create more federations
 
 Note: rabbitmq configuration is kept in a set of volumes. For a restart with clean configs, the volumes associated with the container must be deleted.
